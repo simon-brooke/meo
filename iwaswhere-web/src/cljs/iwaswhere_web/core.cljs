@@ -6,6 +6,7 @@
             [iwaswhere-web.ui.menu :as m]
             [iwaswhere-web.ui.journal :as jrn]
             [iwaswhere-web.keepalive :as ka]
+            [iwaswhere-web.ui.charts.word-cloud :as wcc]
             [matthiasn.systems-toolbox.switchboard :as sb]
             [matthiasn.systems-toolbox-sente.client :as sente]
             [matthiasn.systems-toolbox.scheduler :as sched]))
@@ -18,7 +19,8 @@
                                :entry/trash :import/geo :import/photos
                                :import/phone :stats/pomo-day-get
                                :stats/activity-day-get :stats/tasks-day-get
-                               :state/stats-tags-get :import/weight}})
+                               :state/stats-tags-get :stats/count-words
+                               :import/weight}})
 
 (defn init!
   "Initializes client-side system by sending messages to the switchboard for
@@ -35,24 +37,39 @@
         (store/cmp-map :client/store-cmp)        ; Data store component
         (sched/cmp-map :client/scheduler-cmp)    ; Scheduler component
         (stats/cmp-map :client/stats-cmp)        ; UI component for stats
+        (wcc/cmp-map :client/wordcloud-cmp)      ; UI component for wordcloud
         }]
 
-     [:cmd/route {:from #{:client/store-cmp :client/search-cmp :client/stats-cmp
-                          :client/journal-cmp :client/menu-cmp}
+     [:cmd/route {:from #{:client/store-cmp
+                          :client/search-cmp
+                          :client/stats-cmp
+                          :client/journal-cmp
+                          :client/menu-cmp}
                   :to   :client/ws-cmp}]
 
-     [:cmd/route {:from #{:client/ws-cmp :client/search-cmp
-                          :client/journal-cmp :client/menu-cmp}
+     [:cmd/route {:from #{:client/ws-cmp
+                          :client/search-cmp
+                          :client/journal-cmp
+                          :client/menu-cmp}
                   :to   :client/store-cmp}]
 
      [:cmd/observe-state {:from :client/store-cmp
-                          :to   #{:client/journal-cmp :client/search-cmp
-                                  :client/menu-cmp :client/stats-cmp}}]
+                          :to   #{:client/journal-cmp
+                                  :client/search-cmp
+                                  :client/menu-cmp
+                                  :client/stats-cmp}}]
 
-     [:cmd/route {:from :client/ws-cmp :to :client/stats-cmp}]
-     [:cmd/route {:from :client/store-cmp :to :client/scheduler-cmp}]
-     [:cmd/route {:from :client/scheduler-cmp :to #{:client/store-cmp
-                                                    :client/ws-cmp}}]])
+     [:cmd/route {:from :client/ws-cmp
+                  :to   #{:client/stats-cmp
+                          :client/wordcloud-cmp}}]
+
+     [:cmd/route {:from :client/store-cmp
+                  :to   :client/scheduler-cmp}]
+
+     [:cmd/route {:from :client/scheduler-cmp
+                  :to #{:client/store-cmp
+                        :client/ws-cmp}}]])
+
   (ka/init-keepalive! switchboard))
 
 (init!)

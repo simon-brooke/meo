@@ -125,6 +125,11 @@
           new-state (assoc-in current-state [k ds] msg-payload)]
       {:new-state new-state})))
 
+(defn save-counted-words
+  "Stores received wordcounts."
+  [{:keys [current-state msg-payload]}]
+  {:new-state (assoc-in current-state [:wordcounts] msg-payload)})
+
 (defn cmp-map
   "Creates map for the component which holds the client-side application state."
   [cmp-id]
@@ -139,6 +144,7 @@
                               :stats/activity-day (save-stats :activity-stats)
                               :stats/tasks-day    (save-stats :task-stats)
                               :state/stats-tags   stats-tags-fn
+                              :stats/wordcounts   save-counted-words
                               :show/more          show-more-fn
                               :cmd/set-active     set-active-fn
                               :cmd/toggle-active  toggle-active-fn
