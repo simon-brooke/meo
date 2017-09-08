@@ -137,4 +137,5 @@
      :compiler     {:output-to     "out/testable.js"
                     :output-dir    "out/"
                     :main          iwaswhere-web.runner
+                    :process-shim  false
                     :optimizations :whitespace}}]})
