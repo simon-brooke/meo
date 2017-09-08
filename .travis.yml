@@ -1,4 +1,5 @@
 language: clojure
+install: npm install
 script: lein with-profile +cljs-doo doo firefox cljs-test once
 jdk:
   - oraclejdk8
