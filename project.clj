@@ -58,7 +58,6 @@
 
   :doo {:paths {:karma "./node_modules/karma/bin/karma"}}
 
-
   :plugins [[lein-cljsbuild "1.1.7"
              :exclusions [org.apache.commons/commons-compress]]
             [lein-figwheel "0.5.13"]
