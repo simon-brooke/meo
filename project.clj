@@ -77,11 +77,11 @@
             "build" ["do"
                      ["clean"]
                      ["test"]
+                     ["shell" "yarn" "install"]
                      ["cljsbuild" "once" "main"]
                      ["cljsbuild" "once" "renderer"]
                      ["cljsbuild" "once" "updater"]
                      ["sass"]
-                     ["shell" "yarn" "install"]
                      ["uberjar"]
                      ["shell" "cp" "target/iwaswhere.jar" "bin/"]]
             "dist"  ["do"
