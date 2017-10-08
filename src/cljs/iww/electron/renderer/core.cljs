@@ -2,7 +2,7 @@
   (:require [iww.electron.renderer.log]
             [iwaswhere-web.client-store :as store]
             [iwaswhere-web.ui.re-frame :as rf]
-            [iwaswhere-web.router :as router]
+            [iww.electron.renderer.router :as router]
             [taoensso.timbre :as timbre :refer-macros [info debug]]
             [matthiasn.systems-toolbox-electron.ipc-renderer :as ipc]
             [matthiasn.systems-toolbox-sente.client :as sente]

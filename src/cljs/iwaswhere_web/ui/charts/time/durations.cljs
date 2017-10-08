@@ -9,7 +9,7 @@
             [clojure.pprint :as pp]
             [moment]
             [iwaswhere-web.charts.data :as cd]
-            [iwaswhere-web.helpers :as h]))
+            [iww.electron.renderer.helpers :as h]))
 
 (defn day-bars
   "Renders group with rects for all stories of the particular day."

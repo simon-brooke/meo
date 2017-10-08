@@ -3,7 +3,7 @@
             [re-frame.core :refer [subscribe]]
             [reagent.ratom :refer-macros [reaction]]
             [iwaswhere-web.ui.charts.common :as cc]
-            [iwaswhere-web.helpers :as h]))
+            [iww.electron.renderer.helpers :as h]))
 
 (defn wordcount-chart
   "Draws chart for wordcount per day. The size of the the bars scales

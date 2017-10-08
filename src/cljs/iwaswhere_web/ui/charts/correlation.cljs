@@ -1,7 +1,7 @@
 (ns iwaswhere-web.ui.charts.correlation
   (:require-macros [reagent.ratom :refer [reaction]])
   (:require [reagent.core :as r]
-            [iwaswhere-web.helpers :as h]
+            [iww.electron.renderer.helpers :as h]
             [matthiasn.systems-toolbox.switchboard.helpers :as sh]
             [re-frame.core :refer [subscribe]]))
 

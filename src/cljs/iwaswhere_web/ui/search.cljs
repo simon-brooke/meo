@@ -1,5 +1,5 @@
 (ns iwaswhere-web.ui.search
-  (:require [iwaswhere-web.helpers :as h]
+  (:require [iww.electron.renderer.helpers :as h]
             [iwaswhere-web.utils.misc :as u]
             [iwaswhere-web.utils.parse :as p]
             [iwaswhere-web.ui.draft :as d]

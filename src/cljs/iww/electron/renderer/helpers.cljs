@@ -1,4 +1,4 @@
-(ns iwaswhere-web.helpers
+(ns iww.electron.renderer.helpers
   (:require [matthiasn.systems-toolbox.component :as st]
             [goog.dom.Range]
             [moment]

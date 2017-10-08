@@ -1,5 +1,5 @@
 (ns iwaswhere-web.ui.entry.story
-  (:require [iwaswhere-web.helpers :as h]
+  (:require [iww.electron.renderer.helpers :as h]
             [iwaswhere-web.ui.entry.capture :as c]
             [iwaswhere-web.ui.draft :as d]
             [re-frame.core :refer [subscribe]]

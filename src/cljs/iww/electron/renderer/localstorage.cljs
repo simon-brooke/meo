@@ -1,4 +1,4 @@
-(ns iwaswhere-web.localstorage
+(ns iww.electron.renderer.localstorage
   "Adapted from https://github.com/alandipert/storage-atom"
   (:require [cognitect.transit :as t]
             [clojure.string :as string]))

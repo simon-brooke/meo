@@ -18,7 +18,7 @@
             [iwaswhere-web.ui.entry.thumbnails :as t]
             [moment]
             [iwaswhere-web.utils.misc :as u]
-            [iwaswhere-web.helpers :as h]
+            [iww.electron.renderer.helpers :as h]
             [clojure.set :as set]
             [iwaswhere-web.ui.draft :as d]
             [iwaswhere-web.utils.parse :as p]))

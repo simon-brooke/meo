@@ -2,7 +2,7 @@
   (:require [clojure.string :as s]
             [re-frame.core :refer [subscribe]]
             [iwaswhere-web.ui.questionnaires :as q]
-            [iwaswhere-web.helpers :as h]
+            [iww.electron.renderer.helpers :as h]
             [moment]
             [reagent.ratom :refer-macros [reaction]]
             [matthiasn.systems-toolbox.component :as st]

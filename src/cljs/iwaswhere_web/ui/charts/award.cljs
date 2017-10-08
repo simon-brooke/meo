@@ -1,6 +1,6 @@
 (ns iwaswhere-web.ui.charts.award
   (:require [re-frame.core :refer [subscribe]]
-            [iwaswhere-web.helpers :as h]
+            [iww.electron.renderer.helpers :as h]
             [reagent.core :as r]))
 
 (defn points-by-day-chart

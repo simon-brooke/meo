@@ -1,4 +1,4 @@
-(ns iwaswhere-web.router
+(ns iww.electron.renderer.router
   (:require [secretary.core :as secretary :refer-macros [defroute]]
             [goog.events])
   (:import [goog.history Html5History EventType]))

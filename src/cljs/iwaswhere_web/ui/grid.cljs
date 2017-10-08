@@ -4,7 +4,7 @@
             [clojure.string :as s]
             [moment]
             [reagent.ratom :refer-macros [reaction]]
-            [iwaswhere-web.helpers :as h]
+            [iww.electron.renderer.helpers :as h]
             [iwaswhere-web.ui.search :as search]
             [re-frame.core :refer [subscribe]]
             [iwaswhere-web.ui.entry.entry :as e]))

@@ -1,7 +1,7 @@
 (ns iwaswhere-web.ui.entry.location
   (:require [matthiasn.systems-toolbox.component :as st]
             [clojure.string :as s]
-            [iwaswhere-web.helpers :as h]
+            [iww.electron.renderer.helpers :as h]
             [clojure.pprint :as pp]
             [reagent.core :as r]))
 

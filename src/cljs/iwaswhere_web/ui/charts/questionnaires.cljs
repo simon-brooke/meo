@@ -1,7 +1,7 @@
 (ns iwaswhere-web.ui.charts.questionnaires
   (:require [moment]
             [re-frame.core :refer [subscribe]]
-            [iwaswhere-web.helpers :as h]
+            [iww.electron.renderer.helpers :as h]
             [reagent.ratom :refer-macros [reaction]]
             [goog.string :as gstring]
             [reagent.core :as r]

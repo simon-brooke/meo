@@ -2,7 +2,7 @@
   (:require [reagent.core :as rc]
             [re-frame.core :refer [subscribe]]
             [iwaswhere-web.ui.charts.common :as cc]
-            [iwaswhere-web.helpers :as h]
+            [iww.electron.renderer.helpers :as h]
             [cljs.pprint :as pp]))
 
 (defn loc-table [expanded? per-location label]

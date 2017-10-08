@@ -1,7 +1,7 @@
 (ns iwaswhere-web.ui.charts.custom-fields
   (:require [reagent.core :as rc]
             [iwaswhere-web.ui.charts.common :as cc]
-            [iwaswhere-web.helpers :as h]
+            [iww.electron.renderer.helpers :as h]
             [iwaswhere-web.charts.custom-fields-cfg :as cf]
             [re-frame.core :refer [subscribe]]
             [goog.string :as gstring]

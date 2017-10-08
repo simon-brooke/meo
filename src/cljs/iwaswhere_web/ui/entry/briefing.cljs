@@ -13,7 +13,7 @@
             [clojure.string :as s]
             [reagent.core :as r]
             [moment]
-            [iwaswhere-web.helpers :as h]))
+            [iww.electron.renderer.helpers :as h]))
 
 (defn planned-actual
   "Draws vertical stacked barchart."

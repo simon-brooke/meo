@@ -2,7 +2,7 @@
   (:require [matthiasn.systems-toolbox.component :as st]
             [clojure.string :as s]
             [moment]
-            [iwaswhere-web.helpers :as h]))
+            [iww.electron.renderer.helpers :as h]))
 
 (defn task-details
   [entry local-cfg put-fn edit-mode?]

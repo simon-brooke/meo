@@ -2,7 +2,7 @@
   (:require [matthiasn.systems-toolbox.component :as st]
             [clojure.string :as s]
             [moment]
-            [iwaswhere-web.helpers :as h]))
+            [iww.electron.renderer.helpers :as h]))
 
 (defn reward-details
   [entry put-fn edit-mode?]

@@ -1,5 +1,5 @@
 (ns iwaswhere-web.ui.menu
-  (:require [iwaswhere-web.helpers :as h]
+  (:require [iww.electron.renderer.helpers :as h]
             [moment]
             [re-frame.core :refer [subscribe]]
             [matthiasn.systems-toolbox.component :as stc]

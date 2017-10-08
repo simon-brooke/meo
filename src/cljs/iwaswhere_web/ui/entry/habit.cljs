@@ -2,7 +2,7 @@
   (:require [matthiasn.systems-toolbox.component :as st]
             [clojure.string :as s]
             [moment]
-            [iwaswhere-web.helpers :as h]))
+            [iww.electron.renderer.helpers :as h]))
 
 (defn next-habit-entry
   "Generate next habit entry, as appropriate at the time of calling.

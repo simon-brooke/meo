@@ -1,5 +1,5 @@
 (ns iwaswhere-web.client-store-entry
-  (:require #?(:cljs [iwaswhere-web.localstorage :as sa])
+  (:require #?(:cljs [iww.electron.renderer.localstorage :as sa])
     [matthiasn.systems-toolbox.component :as st]
     [iwaswhere-web.utils.misc :as u]
     [iwaswhere-web.utils.parse :as p]))
