@@ -83,9 +83,8 @@
                      ["cljsbuild" "once" "updater"]
                      ["sass"]
                      ["shell" "yarn" "install"]
-                     ["shell" "webpack" "-p"]
                      ["uberjar"]
-                     ["shell" "cp" "target/iwaswhere.jar" "electron-cljs/bin/"]]
+                     ["shell" "cp" "target/iwaswhere.jar" "bin/"]]
             "dist"  ["do"
                      ["build"]
                      ["shell" "./publish.sh"]]
