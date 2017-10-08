@@ -29,9 +29,9 @@
                 :click       #(put-fn [:app/shutdown])}]}))
 
 (defn file-menu [put-fn]
-  (let [new-entry #(put-fn [:exec/js {:js "iwaswhere_web.ui.menu.new_entry()"}])
-        new-story #(put-fn [:exec/js {:js "iwaswhere_web.ui.menu.new_story()"}])
-        new-saga #(put-fn [:exec/js {:js "iwaswhere_web.ui.menu.new_saga()"}])]
+  (let [new-entry #(put-fn [:exec/js {:js "iww.electron.renderer.ui.menu.new_entry()"}])
+        new-story #(put-fn [:exec/js {:js "iww.electron.renderer.ui.menu.new_story()"}])
+        new-saga #(put-fn [:exec/js {:js "iww.electron.renderer.ui.menu.new_saga()"}])]
     {:label   "File"
      :submenu [{:label       "New Entry"
                 :accelerator "CmdOrCtrl+N"
@@ -46,7 +46,7 @@
 
 (defn edit-menu [put-fn]
   (let [lang (fn [cc label]
-               (let [js (str "iwaswhere_web.ui.menu.change_language(\"" cc "\")")
+               (let [js (str "iww.electron.renderer.ui.menu.change_language(\"" cc "\")")
                      click #(do
                               (info "click" cc)
                               (put-fn (broadcast [:exec/js {:js js}])))]
@@ -119,7 +119,7 @@
                 :click       #(put-fn [:window/dev-tools])}]}))
 
 (defn capture-menu [put-fn]
-  (let [js "iwaswhere_web.ui.menu.capture_screen()"
+  (let [js "iww.electron.renderer.ui.menu.capture_screen()"
         screenshot (fn [_]
                      (let [tag (stc/make-uuid)
                            put-fn #(put-fn (with-meta % {:tag tag}))]

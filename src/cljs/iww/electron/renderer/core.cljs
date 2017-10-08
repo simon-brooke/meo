@@ -65,18 +65,13 @@
                     :to   #{:renderer/store-cmp
                             :renderer/ipc-cmp}}]
 
-       [:cmd/observe-state {:from :renderer/store-cmp
-                            :to   :renderer/ui-cmp}]
+       [:cmd/observe-state {:from :renderer/store-cmp :to :renderer/ui-cmp}]
 
        [:cmd/route {:from :renderer/scheduler-cmp
                     :to   #{:renderer/store-cmp
                             :renderer/ws-cmp}}]
 
-       (when OBSERVER
-         [:cmd/attach-to-firehose :renderer/ws-cmp])
-
-       [:cmd/send {:to  :renderer/exec-cmp
-                   :msg [:exec/js {:js "iwaswhere_web.ui.menu.hide()"}]}]])))
+       (when OBSERVER [:cmd/attach-to-firehose :renderer/ws-cmp])])))
 
 (defn load-handler [ev]
   (info "RENDERER loaded")

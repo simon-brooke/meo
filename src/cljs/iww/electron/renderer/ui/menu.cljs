@@ -37,11 +37,10 @@
 (defn new-import-view
   "Renders new and import buttons."
   [put-fn]
-  (let [local (r/atom {:show true})]
+  (let [local (r/atom {:show false})]
     (def ^:export new-entry (h/new-entry-fn put-fn {} nil))
     (def ^:export new-story (h/new-entry-fn put-fn {:entry-type :story} nil))
     (def ^:export new-saga (h/new-entry-fn put-fn {:entry-type :saga} nil))
-    (defn ^:export hide [] (swap! local update-in [:show] not))
     (fn [put-fn]
       (when (:show @local)
         [:div.new-import
