@@ -3,6 +3,7 @@
 #npm version patch
 
 cd bundle
+yarn install
 webpack -p
 cd ..
 
