@@ -111,15 +111,18 @@
                                :source-paths ["src/cljc" "src/cljs"]
                                :compiler     {:main           iww.electron.renderer.core
                                               :output-to      "prod/renderer/renderer.js"
+                                              :source-map     true
                                               :target         :nodejs
                                               :output-dir     "prod/renderer"
                                               :externs        ["externs/externs.js"]
                                               :npm-deps       {:electron-log "2.2.7"
                                                                :react        "15.6.1"
                                                                :react-dom    "15.6.1"
+                                                               :draft-js     "0.10.3"
+                                                               :moment       "2.18.1"
                                                                :electron     "1.7.6"}
                                               ;:install-deps   true
-                                              :optimizations  :advanced
+                                              :optimizations  :none
                                               :parallel-build true}}
                               {:id           "updater"
                                :source-paths ["src/cljs"]

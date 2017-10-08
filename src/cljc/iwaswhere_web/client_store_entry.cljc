@@ -1,5 +1,6 @@
 (ns iwaswhere-web.client-store-entry
-  (:require #?(:cljs [alandipert.storage-atom :as sa])
+  (:require
+    #?(:cljs [alandipert.storage-atom :as sa])
     [matthiasn.systems-toolbox.component :as st]
     [iwaswhere-web.utils.misc :as u]
     [iwaswhere-web.utils.parse :as p]))
@@ -7,6 +8,8 @@
 #?(:clj  (defonce new-entries-ls (atom {}))
    :cljs (defonce new-entries-ls (sa/local-storage
                                    (atom {}) "iWasWhere_new_entries")))
+
+;(defonce new-entries-ls (atom {}))
 
 (defn update-local-storage
   "Updates local-storage with the provided new-entries."

@@ -1,5 +1,6 @@
 (ns iwaswhere-web.ui.menu
   (:require [iwaswhere-web.helpers :as h]
+            [moment]
             [re-frame.core :refer [subscribe]]
             [matthiasn.systems-toolbox.component :as stc]
             [reagent.core :as r]
@@ -37,10 +38,10 @@
   "Renders new and import buttons."
   [put-fn]
   (let [local (r/atom {:show true})]
-    (def new-entry (h/new-entry-fn put-fn {} nil))
-    (def new-story (h/new-entry-fn put-fn {:entry-type :story} nil))
-    (def new-saga (h/new-entry-fn put-fn {:entry-type :saga} nil))
-    (defn hide [] (swap! local update-in [:show] not))
+    (def ^:export new-entry (h/new-entry-fn put-fn {} nil))
+    (def ^:export new-story (h/new-entry-fn put-fn {:entry-type :story} nil))
+    (def ^:export new-saga (h/new-entry-fn put-fn {:entry-type :saga} nil))
+    (defn ^:export hide [] (swap! local update-in [:show] not))
     (fn [put-fn]
       (when (:show @local)
         [:div.new-import
@@ -77,7 +78,7 @@
                         [:cmd/schedule-new
                          {:message [:import/screenshot {:filename filename}]
                           :timeout 100}]))]
-    (def capture-screen screenshot)
+    (def ^:export capture-screen screenshot)
     (fn [put-fn]
       [:div
        (for [option toggle-options]
@@ -118,7 +119,7 @@
                         (put-fn [:search/add {:tab-group :briefing :query q}])
                         (put-fn [:search/refresh])))]
     (fn stats-view-render [put-fn]
-      (let [briefings (mapv #(js/moment %) (keys @briefings))]
+      (let [briefings (mapv #(moment %) (keys @briefings))]
         [:div.calendar
          [calendar {:select-date select-date
                     :briefings   briefings}]]))))

@@ -20,10 +20,10 @@
                                :state/stats-tags-get :import/weight :import/listen
                                :state/search :cfg/refresh :firehose/cmp-recv
                                :firehose/cmp-put}
-                :sente-opts  {:host     "localhost:8765"
+                :sente-opts  {:host     (.-iwwHOST js/window)
                               :protocol "http:"}})
 
-(def OBSERVER true)
+(def OBSERVER (.-OBSERVER js/window))
 
 (defn make-observable
   [components]

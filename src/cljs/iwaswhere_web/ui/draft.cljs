@@ -3,6 +3,7 @@
             [re-frame.core :refer [subscribe]]
             [reagent.ratom :refer-macros [reaction]]
             [reagent.core :as r]
+            [draft-js :as Draft]
             [iwaswhere-web.utils.parse :as p]
             [iwaswhere-web.utils.misc :as u]
             [iwaswhere-web.ui.entry.utils :as eu]
@@ -10,13 +11,13 @@
 
 (defn editor-state-from-text
   [text]
-  (let [content-from-text (.createFromText js/Draft.ContentState text)]
-    (.createWithContent js/Draft.EditorState content-from-text)))
+  (let [content-from-text (.createFromText Draft.ContentState text)]
+    (.createWithContent Draft.EditorState content-from-text)))
 
 (defn editor-state-from-raw
   [editor-state]
-  (let [content-from-raw (.convertFromRaw js/Draft editor-state)]
-    (.createWithContent js/Draft.EditorState content-from-raw)))
+  (let [content-from-raw (.convertFromRaw Draft editor-state)]
+    (.createWithContent Draft.EditorState content-from-raw)))
 
 (defn story-mapper
   [[ts story]]
@@ -28,7 +29,7 @@
   (fn [new-state]
     (let [current-content (.getCurrentContent new-state)
           plain (.getPlainText current-content)
-          raw-content (.convertToRaw js/Draft current-content)
+          raw-content (.convertToRaw Draft current-content)
           via-json (.parse js/JSON (.stringify js/JSON raw-content))
           new-state (js->clj via-json :keywordize-keys true)]
       (update-cb plain new-state))))

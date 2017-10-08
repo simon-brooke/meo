@@ -120,3 +120,16 @@ var fs = {};
 fs.renameSync = function(oldPath, newPath) {};
 fs.existsSync = function(path) {};
 fs.readFileSync = function(path) {};
+
+window.iwwHOST = {};
+window.OBSERVER = {};
+
+var moment = function () {};
+moment.format = function () {};
+
+var Draft = {};
+
+var goog = {};
+goog.Timer = function () {};
+goog.Timer.callOnce = function () {};
+goog.Timer.clear = function () {};

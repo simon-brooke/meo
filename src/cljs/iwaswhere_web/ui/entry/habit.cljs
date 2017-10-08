@@ -1,20 +1,21 @@
 (ns iwaswhere-web.ui.entry.habit
   (:require [matthiasn.systems-toolbox.component :as st]
             [clojure.string :as s]
+            [moment]
             [iwaswhere-web.helpers :as h]))
 
 (defn next-habit-entry
   "Generate next habit entry, as appropriate at the time of calling.
    Store this to actually create entry."
   [entry]
-  (let [next-hh-mm (-> entry :habit :active-from (js/moment) (h/hh-mm))
+  (let [next-hh-mm (-> entry :habit :active-from (moment) (h/hh-mm))
         active-days (filter identity (map (fn [[k v]] (when v k))
                                           (get-in entry [:habit :days])))
         active-days (concat active-days (map #(+ % 7) active-days))
         active-days (filter number? active-days)
-        current-day (.day (js/moment))
+        current-day (.day (moment))
         next-day-int (first (drop-while #(>= current-day %) active-days))
-        next-day (h/ymd (.add (js/moment) (- next-day-int current-day) "d"))
+        next-day (h/ymd (.add (moment) (- next-day-int current-day) "d"))
         next-active (str next-day "T" next-hh-mm)]
     (-> entry
         (assoc-in [:timestamp] (st/now))
@@ -51,7 +52,7 @@
             (if-not (-> entry :habit :next-entry)
               ;; check off and create next habit entry
               (let [next-entry (next-habit-entry entry)
-                    completion-ts (.format (js/moment))
+                    completion-ts (.format (moment))
                     next-ts (:timestamp next-entry)
                     updated (-> entry
                                 (assoc-in [:habit :next-entry] next-ts)

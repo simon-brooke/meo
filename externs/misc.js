@@ -9,3 +9,5 @@ var randomColor = function () {};
 
 var window = {};
 window.send = function () {};
+window.iwwHOST = {};
+window.OBSERVER = {};

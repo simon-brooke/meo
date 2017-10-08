@@ -7,6 +7,7 @@
             [re-frame.core :refer [subscribe]]
             [reagent.ratom :refer-macros [reaction]]
             [clojure.pprint :as pp]
+            [moment]
             [iwaswhere-web.charts.data :as cd]
             [iwaswhere-web.helpers :as h]))
 
@@ -182,7 +183,7 @@
                              (cd/past-7-days :time-by-saga)
                              (sort-by second >))
             dur (u/duration-string (:total-time day-stats))
-            fmt-date (.format (js/moment (:date-string day-stats)) "ddd YY-MM-DD")]
+            fmt-date (.format (moment (:date-string day-stats)) "ddd YY-MM-DD")]
         (h/keep-updated :stats/pomodoro 60 local @last-update put-fn)
         [:div
          [:div.times-by-day
@@ -242,7 +243,7 @@
                              (cd/past-7-days :time-by-saga)
                              (sort-by second >))
             dur (u/duration-string (:total-time day-stats))
-            fmt-date (.format (js/moment (:date-string day-stats)) "ddd YY-MM-DD")]
+            fmt-date (.format (moment (:date-string day-stats)) "ddd YY-MM-DD")]
         (h/keep-updated :stats/pomodoro 60 local @last-update put-fn)
         [:div
          [:div.times-by-day

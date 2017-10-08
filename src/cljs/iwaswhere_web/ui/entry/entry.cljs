@@ -16,7 +16,7 @@
             [iwaswhere-web.ui.entry.story :as es]
             [iwaswhere-web.ui.entry.utils :as eu]
             [iwaswhere-web.ui.entry.thumbnails :as t]
-            [cljsjs.moment]
+            [moment]
             [iwaswhere-web.utils.misc :as u]
             [iwaswhere-web.helpers :as h]
             [clojure.set :as set]
@@ -75,8 +75,8 @@
         linked-desc (reaction (get @entries-map (:linked-timestamp @entry)))
         show-map? (reaction (contains? (:show-maps-for @cfg) ts))
         active (reaction (:active @cfg))
-        q-date-string (.format (js/moment ts) "YYYY-MM-DD")
-        formatted-time (.format (js/moment ts) "ddd YY-MM-DD HH:mm")
+        q-date-string (.format (moment ts) "YYYY-MM-DD")
+        formatted-time (.format (moment ts) "ddd YY-MM-DD HH:mm")
         tab-group (:tab-group local-cfg)
         add-search (up/add-search q-date-string tab-group put-fn)
         pomo-start #(put-fn [:cmd/pomodoro-start @entry])

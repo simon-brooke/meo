@@ -6,6 +6,7 @@
             [iwaswhere-web.ui.entry.actions :as a]
             [iwaswhere-web.utils.parse :as up]
             [clojure.string :as s]
+            [moment]
             [iwaswhere-web.ui.entry.utils :as eu]))
 
 (defn task-sorter
@@ -18,9 +19,9 @@
 
 (defn m-to-hhmm
   [minutes]
-  (let [dur (.duration js/moment minutes "minutes")
+  (let [dur (.duration moment minutes "minutes")
         ms (.asMilliseconds dur)
-        utc (.utc js/moment ms)
+        utc (.utc moment ms)
         fmt (.format utc "HH:mm")]
     fmt))
 
@@ -146,7 +147,7 @@
                             (let [active-from (-> t :task :active-from)
                                   current-filter (get linked-filters (:filter @local))]
                               (if (and active-from (= (:filter @local) :active))
-                                (let [from-now (.fromNow (js/moment active-from))]
+                                (let [from-now (.fromNow (moment active-from))]
                                   (s/includes? from-now "ago"))
                                 true)))
             started-tasks (set @started-tasks)

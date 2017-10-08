@@ -2,6 +2,7 @@
   (:require [reagent.core :as rc]
             [iwaswhere-web.ui.journal :as j]
             [clojure.string :as s]
+            [moment]
             [reagent.ratom :refer-macros [reaction]]
             [iwaswhere-web.helpers :as h]
             [iwaswhere-web.ui.search :as search]
@@ -10,7 +11,7 @@
 
 (defn fmt-ts [q]
   (let [ts (:timestamp q)]
-    (.format (js/moment (js/parseInt ts)) "YY-MM-DD HH:mm")))
+    (.format (moment (js/parseInt ts)) "YY-MM-DD HH:mm")))
 
 (defn tabs-header-view
   [tab-group put-fn]

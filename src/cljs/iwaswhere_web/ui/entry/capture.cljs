@@ -3,6 +3,7 @@
             [re-frame.core :refer [subscribe]]
             [iwaswhere-web.ui.questionnaires :as q]
             [iwaswhere-web.helpers :as h]
+            [moment]
             [reagent.ratom :refer-macros [reaction]]
             [matthiasn.systems-toolbox.component :as st]
             [reagent.core :as r]))
@@ -86,7 +87,7 @@
                               parsed (case input-type
                                        :number (when (seq v) (js/parseFloat v))
                                        :time (when (seq v)
-                                               (.asMinutes (.duration js/moment v)))
+                                               (.asMinutes (.duration moment v)))
                                        v)
                               updated (assoc-in entry path parsed)]
                           (put-fn [:entry/update-local updated])))]
@@ -101,7 +102,7 @@
                       (let [p1 (-> (:md entry) (s/split tag) first)
                             v (last (re-seq #"\d+:\d{2}" p1))]
                         (when v
-                          (let [m (.asMinutes (.duration js/moment v))
+                          (let [m (.asMinutes (.duration moment v))
                                 updated (assoc-in entry path m)]
                             (put-fn [:entry/update-local updated]))))))
                   ^{:key (str "cf" ts tag k)}

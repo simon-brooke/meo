@@ -6,7 +6,6 @@
             [iwaswhere-web.ui.charts.time.durations :as cd]
             [iwaswhere-web.ui.charts.media :as m]
             [iwaswhere-web.helpers :as h]
-            [cljsjs.moment]
             [re-frame.core :refer [subscribe]]
             [cljs.pprint :as pp]
             [iwaswhere-web.ui.charts.award :as aw]))

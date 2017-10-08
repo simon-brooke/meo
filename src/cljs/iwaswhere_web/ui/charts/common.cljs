@@ -1,6 +1,7 @@
 (ns iwaswhere-web.ui.charts.common
   (:require [clojure.string :as s]
             [randomcolor]
+            [moment]
             [iwaswhere-web.utils.parse :as up]
             [iwaswhere-web.charts.data :as cd]
             [reagent.core :as rc]))
@@ -17,7 +18,7 @@
 
 (defn weekend?
   [date-string]
-  (let [day-of-week (.weekday (js/moment. date-string))]
+  (let [day-of-week (.weekday (moment. date-string))]
     (not (and (pos? day-of-week) (< day-of-week 6)))))
 
 (defn weekend-class

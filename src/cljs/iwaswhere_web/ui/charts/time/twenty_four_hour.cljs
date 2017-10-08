@@ -5,6 +5,7 @@
             [re-frame.core :refer [subscribe]]
             [reagent.ratom :refer-macros [reaction]]
             [clojure.pprint :as pp]
+            [moment]
             [iwaswhere-web.charts.data :as cd]))
 
 (defn ts-bars
@@ -19,7 +20,7 @@
                                 (assoc-in [:items k :v] v)
                                 (assoc-in [:items k :y] total))))]
     (fn [day-stats local item-name-k idx chart-h y-scale put-fn]
-      (let [day (js/moment (:date-string day-stats))
+      (let [day (moment (:date-string day-stats))
             day-millis (.valueOf day)
             mouse-enter-fn (cc/mouse-enter-fn local day-stats)
             mouse-leave-fn (cc/mouse-leave-fn local day-stats)

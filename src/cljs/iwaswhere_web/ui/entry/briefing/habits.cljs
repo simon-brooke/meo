@@ -5,6 +5,7 @@
             [iwaswhere-web.utils.misc :as u]
             [iwaswhere-web.utils.parse :as up]
             [clojure.string :as s]
+            [moment]
             [iwaswhere-web.ui.entry.utils :as eu]))
 
 (defn habit-sorter
@@ -44,7 +45,7 @@
     (fn waiting-habits-list-render [entry local local-cfg put-fn]
       (let [habits (if (:expanded-habits @local) @habits (take 12 @habits))
             tab-group (:tab-group local-cfg)
-            today (.format (js/moment.) "YYYY-MM-DD")
+            today (.format (moment.) "YYYY-MM-DD")
             briefing-day (-> entry :briefing :day)]
         (when (and (= today briefing-day) (seq habits))
           [:div

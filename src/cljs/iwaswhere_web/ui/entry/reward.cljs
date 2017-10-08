@@ -1,13 +1,14 @@
 (ns iwaswhere-web.ui.entry.reward
   (:require [matthiasn.systems-toolbox.component :as st]
             [clojure.string :as s]
+            [moment]
             [iwaswhere-web.helpers :as h]))
 
 (defn reward-details
   [entry put-fn edit-mode?]
   (let [claimed (fn [entry]
                (fn [ev]
-                 (let [completion-ts (.format (js/moment))
+                 (let [completion-ts (.format (moment))
                        updated (-> entry
                                    (assoc-in [:reward :claimed-ts] completion-ts)
                                    (update-in [:reward :claimed] not))]

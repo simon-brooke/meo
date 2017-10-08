@@ -12,6 +12,7 @@
             [iwaswhere-web.utils.parse :as up]
             [clojure.string :as s]
             [reagent.core :as r]
+            [moment]
             [iwaswhere-web.helpers :as h]))
 
 (defn planned-actual
@@ -85,7 +86,7 @@
         cfg (subscribe [:cfg])
         last-update (subscribe [:last-update])
         day (-> entry :briefing :day)
-        today (.format (js/moment.) "YYYY-MM-DD")
+        today (.format (moment.) "YYYY-MM-DD")
         filter-btn (if (= day today) :active :open)
         local (r/atom {:filter                  filter-btn
                        :outstanding-time-filter true

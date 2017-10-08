@@ -1,6 +1,7 @@
 (ns iwaswhere-web.helpers
   (:require [matthiasn.systems-toolbox.component :as st]
             [goog.dom.Range]
+            [moment]
             [clojure.string :as s]
             [iwaswhere-web.utils.parse :as p]
             [matthiasn.systems-toolbox.component.helpers :as h]
@@ -54,13 +55,13 @@
         (put-fn [:entry/update-local updated])))))
 
 (def ymd-format "YYYY-MM-DD")
-(defn n-days-ago [n] (.subtract (js/moment.) n "d"))
+(defn n-days-ago [n] (.subtract (moment.) n "d"))
 (defn n-days-ago-fmt [n] (.format (n-days-ago n) ymd-format))
-(defn format-time [m] (.format (js/moment m) "YYYY-MM-DDTHH:mm"))
-(defn hh-mm [m] (.format (js/moment m) "HH:mm"))
-(defn ymd [m] (.format (js/moment m) ymd-format))
+(defn format-time [m] (.format (moment m) "YYYY-MM-DDTHH:mm"))
+(defn hh-mm [m] (.format (moment m) "HH:mm"))
+(defn ymd [m] (.format (moment m) ymd-format))
 (defn m-to-hh-mm [m]
-  (let [t (js/moment (* m 60 1000))]
+  (let [t (moment (* m 60 1000))]
     (.format (.utc t) "HH:mm")))
 
 (defn get-stats

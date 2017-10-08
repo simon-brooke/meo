@@ -1,5 +1,5 @@
 (ns iwaswhere-web.ui.charts.questionnaires
-  (:require [cljsjs.moment]
+  (:require [moment]
             [re-frame.core :refer [subscribe]]
             [iwaswhere-web.helpers :as h]
             [reagent.ratom :refer-macros [reaction]]
@@ -13,7 +13,7 @@
 (def month-day "DD.MM.")
 (def ymd "YYYY-MM-DD")
 (def weekday "ddd")
-(defn df [ts format] (.format (js/moment ts) format))
+(defn df [ts format] (.format (moment ts) format))
 
 (def tz-offset
   (-> (js/Date.)

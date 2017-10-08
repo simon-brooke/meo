@@ -1,6 +1,5 @@
 (ns iwaswhere-web.ui.charts.award
-  (:require [cljsjs.moment]
-            [re-frame.core :refer [subscribe]]
+  (:require [re-frame.core :refer [subscribe]]
             [iwaswhere-web.helpers :as h]
             [reagent.core :as r]))
 

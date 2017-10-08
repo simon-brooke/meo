@@ -1,14 +1,15 @@
 (ns iwaswhere-web.ui.entry.task
   (:require [matthiasn.systems-toolbox.component :as st]
             [clojure.string :as s]
+            [moment]
             [iwaswhere-web.helpers :as h]))
 
 (defn task-details
   [entry local-cfg put-fn edit-mode?]
-  (let [format-time #(.format (js/moment %) "ddd MMM DD - HH:mm")
+  (let [format-time #(.format (moment %) "ddd MMM DD - HH:mm")
         input-fn (fn [entry k]
                    (fn [ev]
-                     (let [dt (js/moment (-> ev .-nativeEvent .-target .-value))
+                     (let [dt (moment (-> ev .-nativeEvent .-target .-value))
                            updated (assoc-in entry [:task k] (.valueOf dt))]
                        (put-fn [:entry/update-local updated]))))
         set-active-from (fn [entry]
@@ -26,7 +27,7 @@
                       (put-fn [:search/remove local-cfg])))
         done (fn [entry]
                (fn [ev]
-                 (let [completion-ts (.format (js/moment))
+                 (let [completion-ts (.format (moment))
                        updated (-> entry
                                    (assoc-in [:task :completion-ts] completion-ts)
                                    (update-in [:task :done] not))]

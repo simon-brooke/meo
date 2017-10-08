@@ -3,6 +3,7 @@
             [re-frame.core :refer [subscribe]]
             [matthiasn.systems-toolbox.component :as st]
             [iwaswhere-web.utils.parse :as up]
+            [moment]
             [iwaswhere-web.ui.charts.common :as cc]))
 
 (defn calendar-view [day put-fn]
@@ -39,4 +40,4 @@
         [:div.big-calendar
          [cal {:events         cal-entries
                :scroll-to-date (js/Date. (- (st/now) (* 3 60 60 1000)))
-               :default-date   (.toDate (js/moment. day))}]]))))
+               :default-date   (.toDate (moment. day))}]]))))
