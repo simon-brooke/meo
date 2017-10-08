@@ -93,10 +93,12 @@
 (defn upload-view
   "Renders QR-code with upload address."
   []
-  (let [cfg (subscribe [:cfg])]
+  (let [cfg (subscribe [:cfg])
+        iww-host (.-iwwHOST js/window)]
     (fn upload-view2-render []
       (when (:qr-code @cfg)
-        [:img {:src (str "http://localhost:8765/upload-address/" (stc/make-uuid) "/qrcode.png")}]))))
+        [:img {:src (str "http://" iww-host "/upload-address/"
+                         (stc/make-uuid) "/qrcode.png")}]))))
 
 (defn calendar-view
   "Renders calendar component."

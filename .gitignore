@@ -45,3 +45,4 @@ yarn.lock
 package-lock.json
 
 prod/
+dist/

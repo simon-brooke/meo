@@ -7,6 +7,7 @@
             [matthiasn.systems-toolbox-electron.ipc-renderer :as ipc]
             [matthiasn.systems-toolbox-sente.client :as sente]
             [iww.electron.renderer.exec :as exec]
+            [cljs.nodejs :as nodejs :refer [process]]
             [matthiasn.systems-toolbox.switchboard :as sb]
             [matthiasn.systems-toolbox.scheduler :as sched]))
 

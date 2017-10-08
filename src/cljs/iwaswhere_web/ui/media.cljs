@@ -3,14 +3,16 @@
             [reagent.core :as r]
             [clojure.pprint :as pp]))
 
+(def iww-host (.-iwwHOST js/window))
+
 (defn image-view
   "Renders image view. Used resized and properly rotated image endpoint
    when JPEG file requested."
   [entry query-params]
   (when-let [file (:img-file entry)]
-    (let [path (str "http://localhost:8765/photos/" file)
+    (let [path (str "http://" iww-host "/photos/" file)
           resized (if (s/includes? (s/lower-case path) ".jpg")
-                    (str "http://localhost:8765/photos2/" file query-params)
+                    (str "http://" iww-host "/photos2/" file query-params)
                     path)]
       [:a {:href path :target "_blank"}
        [:img {:src resized}]])))
@@ -29,14 +31,16 @@
          (when-not (get-in entry path)
            (let [updated (assoc-in entry path (js/parseInt duration))]
              (put-fn [:entry/update-local updated])))))
-     [:source {:src (str "/audio/" audio-file) :type "audio/mp4"}]]))
+     [:source {:src  (str "http://" iww-host "/audio/" audio-file)
+               :type "audio/mp4"}]]))
 
 (defn videoplayer-view
   "Renders video player view."
   [entry]
   (when-let [video-file (:video-file entry)]
     [:video {:controls true :preload "none"}
-     [:source {:src (str "/videos/" video-file) :type "video/mp4"}]]))
+     [:source {:src  (str "http://" iww-host "/videos/" video-file)
+               :type "video/mp4"}]]))
 
 (defn imdb-view
   "Renders IMDb view."

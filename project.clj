@@ -46,7 +46,7 @@
 
   :source-paths ["src/cljc" "src/clj/"]
 
-  :clean-targets ^{:protect false} ["resources/public/js/build/" "target/" "packages/"]
+  :clean-targets ^{:protect false} ["resources/public/js/build" "prod" "target"]
   :auto-clean false
   :uberjar-name "iwaswhere.jar"
 
@@ -82,7 +82,7 @@
                      ["cljsbuild" "once" "renderer"]
                      ["cljsbuild" "once" "updater"]
                      ["sass"]
-                     ["shell" "npm" "install"]
+                     ["shell" "yarn" "install"]
                      ["shell" "webpack" "-p"]
                      ["uberjar"]
                      ["shell" "cp" "target/iwaswhere.jar" "electron-cljs/bin/"]]
@@ -111,10 +111,13 @@
                                :source-paths ["src/cljc" "src/cljs"]
                                :compiler     {:main           iww.electron.renderer.core
                                               :output-to      "prod/renderer/renderer.js"
-                                              :source-map     true
+                                              :source-map     "prod/renderer/renderer.js.map"
+                                              ;:source-map     true
                                               :target         :nodejs
                                               :output-dir     "prod/renderer"
-                                              :externs        ["externs/externs.js"]
+                                              :externs        ["externs/externs.js"
+                                                               "externs/misc.js"
+                                                               "externs/leaflet.ext.js"]
                                               :npm-deps       {:electron-log "2.2.7"
                                                                :react        "15.6.1"
                                                                :react-dom    "15.6.1"
@@ -122,7 +125,7 @@
                                                                :moment       "2.18.1"
                                                                :electron     "1.7.6"}
                                               ;:install-deps   true
-                                              :optimizations  :none
+                                              :optimizations  :simple
                                               :parallel-build true}}
                               {:id           "updater"
                                :source-paths ["src/cljs"]

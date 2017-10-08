@@ -133,3 +133,5 @@ var goog = {};
 goog.Timer = function () {};
 goog.Timer.callOnce = function () {};
 goog.Timer.clear = function () {};
+goog.Timer.defaultTimerObject = function () {};
+goog.Timer.defaultTimerObject.setTimeout = function () {};
