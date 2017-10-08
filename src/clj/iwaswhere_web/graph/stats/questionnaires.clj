@@ -6,7 +6,7 @@
             [iwaswhere-web.graph.stats.awards :as aw]
             [iwaswhere-web.graph.stats.time :as t-s]
             [iwaswhere-web.utils.misc :as u]
-            [iwaswhere-web.ui.questionnaires :as q]
+            [iww.electron.renderer.uiquestionnaires :as q]
             [clj-time.format :as ctf]
             [matthiasn.systems-toolbox.log :as l]
             [clojure.tools.logging :as log]

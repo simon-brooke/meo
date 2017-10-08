@@ -1,7 +1,7 @@
 (ns iww.electron.renderer.core
   (:require [iww.electron.renderer.log]
             [iwaswhere-web.client-store :as store]
-            [iwaswhere-web.ui.re-frame :as rf]
+            [iww.electron.renderer.ui.re-frame :as rf]
             [iww.electron.renderer.router :as router]
             [taoensso.timbre :as timbre :refer-macros [info debug]]
             [matthiasn.systems-toolbox-electron.ipc-renderer :as ipc]
