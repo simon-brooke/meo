@@ -85,11 +85,12 @@
   (let [index-page (:index-page rt/runtime-info)
         new-window #(put-fn [:window/new {:url index-page}])
         open (fn [loc]
-               #(let [js (str "window.location = '" loc "'")
+               #(let [js (str "window.location.hash = '" loc "'")
                       window-id {:window-id (stc/make-uuid)}]
-                  (put-fn [:window/new
-                           (merge window-id {:url index-page :cached true})])
-                  (put-fn (with-meta [:exec/js {:js js}] window-id))))]
+                  #_(put-fn [:window/new
+                             (merge window-id {:url index-page :cached false})])
+                  ;(put-fn (with-meta [:exec/js {:js js}] window-id))
+                  (put-fn [:exec/js {:js js}])))]
     {:label   "View"
      :submenu [{:label       "Close Window"
                 :accelerator "CmdOrCtrl+W"
@@ -103,14 +104,16 @@
                {:label       "New Window"
                 :accelerator "CmdOrCtrl+Alt+N"
                 :click       new-window}
+               {:label "Main View"
+                :click (open "")}
                {:label "Charts"
-                :click (open "/#/charts1")}
+                :click (open "charts1")}
                {:label "Countries"
-                :click (open "/#/countries")}
+                :click (open "countries")}
                {:label "Dashboards"
-                :click (open "/#/dashboards/dashboard-1")}
+                :click (open "dashboards/dashboard-1")}
                {:label "Scatter Matrix"
-                :click (open "/#/correlation")}
+                :click (open "correlation")}
                {:label       "Toggle Split View"
                 :accelerator "CmdOrCtrl+Alt+S"
                 :click       #(put-fn [:cmd/toggle-key {:path [:cfg :single-column]}])}
@@ -124,11 +127,10 @@
                      (let [tag (stc/make-uuid)
                            put-fn #(put-fn (with-meta % {:tag tag}))]
                        (put-fn [:window/hide])
-                       (put-fn [:import/screenshot])
                        (put-fn [:exec/js {:js js}])
                        (put-fn [:cmd/schedule-new
                                 {:message [:window/show]
-                                 :timeout 500}])))]
+                                 :timeout 700}])))]
     {:label   "Capture"
      :submenu [{:label       "New Screenshot"
                 :accelerator "CmdOrCtrl+P"
