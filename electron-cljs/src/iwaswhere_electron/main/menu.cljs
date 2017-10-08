@@ -124,6 +124,7 @@
                      (let [tag (stc/make-uuid)
                            put-fn #(put-fn (with-meta % {:tag tag}))]
                        (put-fn [:window/hide])
+                       (put-fn [:import/screenshot])
                        (put-fn [:exec/js {:js js}])
                        (put-fn [:cmd/schedule-new
                                 {:message [:window/show]
