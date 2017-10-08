@@ -41,8 +41,7 @@
                  [org.webjars.bower/normalize-css "5.0.0"]
                  [org.webjars.bower/leaflet "0.7.7"]
                  [org.webjars.npm/github-com-mrkelly-lato "0.3.0"]
-                 [org.webjars.npm/intl "1.2.4"]
-                 [alandipert/storage-atom "2.0.1"]]
+                 [org.webjars.npm/intl "1.2.4"]]
 
   :source-paths ["src/cljc" "src/clj/"]
 
@@ -102,7 +101,7 @@
                                               :externs        ["externs/externs.js"]
                                               :npm-deps       {:electron-log     "2.2.7"
                                                                :electron-updater "2.8.7"
-                                                               :electron         "1.7.6"}
+                                                               :electron         "1.7.8"}
                                               ;:install-deps   true
                                               :optimizations  :advanced
                                               :parallel-build true}}
@@ -110,7 +109,7 @@
                                :source-paths ["src/cljc" "src/cljs"]
                                :compiler     {:main           iww.electron.renderer.core
                                               :output-to      "prod/renderer/renderer.js"
-                                              :source-map     "prod/renderer/renderer.js.map"
+                                              ;:source-map     "prod/renderer/renderer.js.map"
                                               ;:source-map     true
                                               :target         :nodejs
                                               :output-dir     "prod/renderer"
@@ -122,7 +121,7 @@
                                                                :react-dom    "15.6.1"
                                                                :draft-js     "0.10.3"
                                                                :moment       "2.18.1"
-                                                               :electron     "1.7.6"}
+                                                               :electron     "1.7.8"}
                                               ;:install-deps   true
                                               :optimizations  :simple
                                               :parallel-build true}}
@@ -134,7 +133,7 @@
                                               :output-dir     "prod/updater"
                                               :externs        ["externs/externs.js"]
                                               :npm-deps       {:electron-log "2.2.7"
-                                                               :electron     "1.7.6"}
+                                                               :electron     "1.7.8"}
                                               ;:install-deps   true
                                               :optimizations  :advanced
                                               :parallel-build true}}

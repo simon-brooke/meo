@@ -1,6 +1,5 @@
 (ns iwaswhere-web.client-store
-  (:require #?(:cljs [alandipert.storage-atom :refer [local-storage]])
-    #?(:cljs [reagent.core :refer [atom]])
+  (:require #?(:cljs [reagent.core :refer [atom]])
     [matthiasn.systems-toolbox.component :as st]
     [iwaswhere-web.client-store-entry :as cse]
     [iwaswhere-web.client-store-search :as s]
