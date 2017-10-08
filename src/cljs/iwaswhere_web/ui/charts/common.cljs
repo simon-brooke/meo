@@ -1,5 +1,6 @@
 (ns iwaswhere-web.ui.charts.common
   (:require [clojure.string :as s]
+            [randomcolor]
             [iwaswhere-web.utils.parse :as up]
             [iwaswhere-web.charts.data :as cd]
             [reagent.core :as rc]))
@@ -103,7 +104,7 @@
   "Calls randomColor with seed, which returns same color for seed in subsequent
    invocations."
   [seed]
-  (.randomColor js/window (clj->js {"seed" (str seed)})))
+  (randomcolor (clj->js {"seed" (str seed)})))
 
 (defn horizontal-bar
   "Draws horizontal stacked bar."

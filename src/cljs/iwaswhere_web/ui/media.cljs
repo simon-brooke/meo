@@ -8,9 +8,9 @@
    when JPEG file requested."
   [entry query-params]
   (when-let [file (:img-file entry)]
-    (let [path (str "/photos/" file)
+    (let [path (str "http://localhost:8765/photos/" file)
           resized (if (s/includes? (s/lower-case path) ".jpg")
-                    (str "/photos2/" file query-params)
+                    (str "http://localhost:8765/photos2/" file query-params)
                     path)]
       [:a {:href path :target "_blank"}
        [:img {:src resized}]])))

@@ -30,13 +30,15 @@
             time-by-ts (:time-by-ts day-stats)
             time-by-h (map (fn [[ts v]]
                              (let [h (/ (- ts day) 1000 60 60)]
-                               [h v])) time-by-ts)]
+                               [h v])) time-by-ts)
+            sagas @sagas
+            stories @stories]
         [:g {:on-mouse-enter mouse-enter-fn
              :on-mouse-leave mouse-leave-fn}
          (for [[hh {:keys [summed manual] :as data}] time-by-h]
            (let [item-name (if (= item-name-k :story-name)
-                             (get-in @stories [(:story data) :story-name])
-                             (get-in @sagas [(:saga data) :saga-name]))
+                             (get-in stories [(:story data) :story-name])
+                             (get-in sagas [(:saga data) :saga-name]))
                  h (* y-scale summed)
                  y (* y-scale (+ hh 2) 60 60)
                  y (if (pos? manual) (- y h) y)]

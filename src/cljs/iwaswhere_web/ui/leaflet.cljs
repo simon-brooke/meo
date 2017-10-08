@@ -1,5 +1,6 @@
 (ns iwaswhere-web.ui.leaflet
-  (:require [reagent.core :as rc]))
+  (:require [reagent.core :as rc]
+            [leaflet]))
 
 (defn leaflet-did-mount
   "Function using the did-mount lifecycle method. Uses :id from props map to
@@ -10,10 +11,10 @@
     (let [{:keys [lat lon zoom put-fn ts]} props
           zoom (or zoom 13)
           map-cfg (clj->js {:scrollWheelZoom false})
-          map (.setView (.map js/L (:id props) map-cfg) #js [lat lon] zoom)
-          tiles-url "/tiles/{z}/{x}/{y}.png"]
-      (.addTo (.tileLayer js/L tiles-url (clj->js {:maxZoom 18})) map)
-      (.addTo (.marker js/L #js [lat lon]) map)
+          map (.setView (.map leaflet (:id props) map-cfg) #js [lat lon] zoom)
+          tiles-url "http://localhost:8765/tiles/{z}/{x}/{y}.png"]
+      (.addTo (.tileLayer leaflet tiles-url (clj->js {:maxZoom 18})) map)
+      (.addTo (.marker leaflet #js [lat lon]) map)
       (.on map "zoomend" #(put-fn [:entry/update-local
                                    {:map-zoom  (aget % "target" "_zoom")
                                     :timestamp ts}])))))
@@ -24,7 +25,7 @@
    map div with life, with the latitude and longitude from props.
    TODO: disable zoom, other options for map; change map when data changes"
   [props]
-  (set! (.-imagePath js/L.Icon.Default) "/webjars/leaflet/0.7.7/dist/images/")
+  (set! (.-imagePath js/L.Icon.Default) "./node_modules/leaflet/dist/images/")
   (rc/create-class
     {:component-did-mount (leaflet-did-mount props)
      :reagent-render      (fn [props] [:div.map {:id (:id props)}])}))

@@ -59,15 +59,6 @@
                                   (put-fn [:import/phone]))}
           [:span.fa.fa-map] " import"]]))))
 
-(defn relay-msg-fn [put-fn]
-  (fn [serialized]
-    (let [parsed (read-string serialized)
-          msg-type (first parsed)
-          {:keys [msg-payload msg-meta]} (second parsed)
-          msg (with-meta [msg-type msg-payload] msg-meta)]
-      (prn "relaying" msg)
-      (put-fn msg))))
-
 (defn cfg-view
   "Renders component for toggling display of options such as maps, comments.
    The options, with their respective config key and Font-Awesome icon classes
@@ -86,7 +77,6 @@
                         [:cmd/schedule-new
                          {:message [:import/screenshot {:filename filename}]
                           :timeout 100}]))]
-    (def relay (relay-msg-fn put-fn))
     (def capture-screen screenshot)
     (fn [put-fn]
       [:div
@@ -105,7 +95,7 @@
   (let [cfg (subscribe [:cfg])]
     (fn upload-view2-render []
       (when (:qr-code @cfg)
-        [:img {:src (str "/upload-address/" (stc/make-uuid) "/qrcode.png")}]))))
+        [:img {:src (str "http://localhost:8765/upload-address/" (stc/make-uuid) "/qrcode.png")}]))))
 
 (defn calendar-view
   "Renders calendar component."
