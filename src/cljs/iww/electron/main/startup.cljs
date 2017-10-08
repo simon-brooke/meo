@@ -1,10 +1,10 @@
-(ns iwaswhere-electron.main.startup
+(ns iww.electron.main.startup
   (:require [taoensso.timbre :as timbre :refer-macros [info error]]
             [child_process :refer [spawn fork]]
             [electron :refer [app session shell]]
             [http :as http]
             [path :refer [join normalize]]
-            [iwaswhere-electron.main.runtime :as rt]
+            [iww.electron.main.runtime :as rt]
             [fs :refer [existsSync renameSync readFileSync]]
             [clojure.pprint :as pp]
             [clojure.string :as str]))

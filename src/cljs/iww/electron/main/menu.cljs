@@ -1,11 +1,11 @@
-(ns iwaswhere-electron.main.menu
+(ns iww.electron.main.menu
   (:require [taoensso.timbre :as timbre :refer-macros [info]]
             [electron :refer [app Menu]]
             [matthiasn.systems-toolbox.component :as stc]
-            [iwaswhere-electron.main.runtime :as rt]))
+            [iww.electron.main.runtime :as rt]))
 
 (defn app-menu [put-fn]
-  (let [update-win {:url "updater.html" :width 600 :height 300}
+  (let [update-win {:url "electron/updater.html" :width 600 :height 300}
         check-updates #(put-fn [:window/new update-win])]
     {:label   "Application"
      :submenu [{:label    "About iWasWhere"

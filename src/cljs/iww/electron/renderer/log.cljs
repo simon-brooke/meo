@@ -1,4 +1,4 @@
-(ns iwaswhere-electron.update.log
+(ns iww.electron.renderer.log
   (:require [taoensso.encore :as enc]
             [taoensso.timbre :as timbre]))
 

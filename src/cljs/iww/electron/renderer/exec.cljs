@@ -1,4 +1,4 @@
-(ns iwaswhere-electron.renderer.exec
+(ns iww.electron.renderer.exec
   (:require [taoensso.timbre :as timbre :refer-macros [info]]
             [electron :refer [ipcRenderer]]
             [cljs.spec.alpha :as s]))

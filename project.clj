@@ -71,11 +71,16 @@
 
   :test2junit-run-ant true
 
-  :aliases {"sass"  ["shell" "sass" "src/scss/iwaswhere.scss" "resources/public/css/iwaswhere.css"]
+  :aliases {"sass"  ["do"
+                     ["shell" "sass" "src/scss/iwaswhere.scss" "resources/public/css/iwaswhere.css"]
+                     ["shell" "sass" "src/scss/updater.scss" "resources/public/css/updater.css"]
+                     ["shell" "sass" "src/scss/loader.scss" "resources/public/css/loader.css"]]
             "build" ["do"
                      ["clean"]
                      ["test"]
-                     ["cljsbuild" "once" "release"]
+                     ["cljsbuild" "once" "main"]
+                     ["cljsbuild" "once" "renderer"]
+                     ["cljsbuild" "once" "updater"]
                      ["sass"]
                      ["shell" "npm" "install"]
                      ["shell" "webpack" "-p"]
@@ -90,43 +95,43 @@
 
   :cljsbuild {:test-commands {"cljs-test" ["phantomjs" "test/phantom/test.js" "test/phantom/test.html"]}
               :builds        [{:id           "main"
-                               :source-paths ["src/iwaswhere_electron/main"]
-                               :compiler     {:main           iwaswhere-electron.main.core
+                               :source-paths ["src/cljs"]
+                               :compiler     {:main           iww.electron.main.core
                                               :target         :nodejs
                                               :output-to      "prod/main/main.js"
                                               :output-dir     "prod/main"
-                                              :externs        ["externs.js"]
+                                              :externs        ["externs/externs.js"]
                                               :npm-deps       {:electron-log     "2.2.7"
                                                                :electron-updater "2.8.7"
                                                                :electron         "1.7.6"}
                                               ;:install-deps   true
-                                              :optimizations  :none
+                                              :optimizations  :advanced
                                               :parallel-build true}}
                               {:id           "renderer"
-                               :source-paths ["src/cljc" "src/cljs" "src/iwaswhere_electron/renderer"]
-                               :compiler     {:main           iwaswhere-electron.renderer.core
+                               :source-paths ["src/cljc" "src/cljs"]
+                               :compiler     {:main           iww.electron.renderer.core
                                               :output-to      "prod/renderer/renderer.js"
                                               :target         :nodejs
                                               :output-dir     "prod/renderer"
-                                              :externs        ["externs.js"]
+                                              :externs        ["externs/externs.js"]
                                               :npm-deps       {:electron-log "2.2.7"
                                                                :react        "15.6.1"
                                                                :react-dom    "15.6.1"
                                                                :electron     "1.7.6"}
                                               ;:install-deps   true
-                                              :optimizations  :none
+                                              :optimizations  :advanced
                                               :parallel-build true}}
                               {:id           "updater"
-                               :source-paths ["src/cljs" "src/iwaswhere_electron/update"]
-                               :compiler     {:main           iwaswhere-electron.update.core
+                               :source-paths ["src/cljs"]
+                               :compiler     {:main           iww.electron.update.core
                                               :output-to      "prod/updater/update.js"
                                               :target         :nodejs
                                               :output-dir     "prod/updater"
-                                              :externs        ["externs.js"]
+                                              :externs        ["externs/externs.js"]
                                               :npm-deps       {:electron-log "2.2.7"
                                                                :electron     "1.7.6"}
                                               ;:install-deps   true
-                                              :optimizations  :none
+                                              :optimizations  :advanced
                                               :parallel-build true}}
 
                               {:id           "cljs-test"

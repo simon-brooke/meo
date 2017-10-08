@@ -1,4 +1,4 @@
-(ns iwaswhere-electron.update.ui
+(ns iww.electron.update.ui
   (:require-macros [reagent.ratom :refer [reaction]])
   (:require [reagent.core :as rc]
             [re-frame.core :refer [reg-sub subscribe]]

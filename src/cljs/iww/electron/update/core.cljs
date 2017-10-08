@@ -1,9 +1,9 @@
-(ns iwaswhere-electron.update.core
-  (:require [iwaswhere-electron.update.log]
+(ns iww.electron.update.core
+  (:require [iww.electron.update.log]
             [taoensso.timbre :as timbre :refer-macros [info debug]]
             [matthiasn.systems-toolbox-electron.ipc-renderer :as ipc]
             [matthiasn.systems-toolbox.switchboard :as sb]
-            [iwaswhere-electron.update.ui :as ui]))
+            [iww.electron.update.ui :as ui]))
 
 (defonce switchboard (sb/component :updater/switchboard))
 

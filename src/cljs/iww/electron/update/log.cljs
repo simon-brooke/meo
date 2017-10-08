@@ -1,25 +1,13 @@
-(ns iwaswhere-electron.main.log
-  (:require [electron-log :as l]
-            [cljs.nodejs :as nodejs]
-            [taoensso.encore :as enc]
+(ns iww.electron.update.log
+  (:require [taoensso.encore :as enc]
             [taoensso.timbre :as timbre]))
 
-(aset l "transports" "console" "level" "info")
-(aset l "transports" "console" "format" "{h}:{i}:{s}:{ms} {text}")
-(aset l "transports" "file" "level" "info")
-(aset l "transports" "file" "format" "{h}:{i}:{s}:{ms} {text}")
-(aset l "transports" "file" "file" "/tmp/iWasWhere-electron.log")
-
-(nodejs/enable-util-print!)
+(enable-console-print!)
 
 (defn ns-filter
   "From: https://github.com/yonatane/timbre-ns-pattern-level"
   [fltr]
   (-> fltr enc/compile-ns-filter taoensso.encore/memoize_))
-
-(def namespace-log-levels
-  {;"matthiasn.systems-toolbox-electron.window-manager" :debug
-   :all                                                :info})
 
 (defn middleware
   "From: https://github.com/yonatane/timbre-ns-pattern-level"
@@ -41,11 +29,15 @@
 (def timbre-config
   {:ns-whitelist [] #_["my-app.foo-ns"]
    :ns-blacklist [] #_["taoensso.*"]
-   :middleware   [(middleware namespace-log-levels)]
+
+   :middleware   [(middleware {"observer.view.ipc"   :info
+                               "observer.view.store" :info
+                               :all                  :info})]
+
    :appenders    {:console {:enabled? true
                             :fn       (fn [data]
                                         (let [{:keys [output_]} data
                                               formatted-output-str (force output_)]
-                                          (l/info formatted-output-str)))}}})
+                                          (println formatted-output-str)))}}})
 
 (timbre/merge-config! timbre-config)

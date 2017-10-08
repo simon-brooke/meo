@@ -1,16 +1,16 @@
-(ns iwaswhere-electron.main.core
-  (:require [iwaswhere-electron.main.log]
+(ns iww.electron.main.core
+  (:require [iww.electron.main.log]
             [taoensso.timbre :as timbre :refer-macros [info]]
             [matthiasn.systems-toolbox-electron.ipc-main :as ipc]
             [matthiasn.systems-toolbox-electron.window-manager :as wm]
-            [iwaswhere-electron.main.menu :as menu]
-            [iwaswhere-electron.main.update :as upd]
-            [iwaswhere-electron.main.startup :as st]
+            [iww.electron.main.menu :as menu]
+            [iww.electron.main.update :as upd]
+            [iww.electron.main.startup :as st]
             [electron :refer [app]]
             [matthiasn.systems-toolbox.scheduler :as sched]
             [matthiasn.systems-toolbox.switchboard :as sb]
             [cljs.nodejs :as nodejs :refer [process]]
-            [iwaswhere-electron.main.runtime :as rt]))
+            [iww.electron.main.runtime :as rt]))
 
 (aset process "env" "GOOGLE_API_KEY" "AIzaSyD78NTnhgt--LCGBdIGPEg8GtBYzQl0gKU")
 

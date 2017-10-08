@@ -1,4 +1,4 @@
-(ns iwaswhere-electron.main.runtime
+(ns iww.electron.main.runtime
   (:require [path :refer [normalize join]]
             [electron :refer [app]]
             [cljs.nodejs :as nodejs :refer [process]]

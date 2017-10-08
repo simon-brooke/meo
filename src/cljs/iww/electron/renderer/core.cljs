@@ -1,12 +1,12 @@
-(ns iwaswhere-electron.renderer.core
-  (:require [iwaswhere-electron.renderer.log]
+(ns iww.electron.renderer.core
+  (:require [iww.electron.renderer.log]
             [iwaswhere-web.client-store :as store]
             [iwaswhere-web.ui.re-frame :as rf]
             [iwaswhere-web.router :as router]
             [taoensso.timbre :as timbre :refer-macros [info debug]]
             [matthiasn.systems-toolbox-electron.ipc-renderer :as ipc]
             [matthiasn.systems-toolbox-sente.client :as sente]
-            [iwaswhere-electron.renderer.exec :as exec]
+            [iww.electron.renderer.exec :as exec]
             [matthiasn.systems-toolbox.switchboard :as sb]
             [matthiasn.systems-toolbox.scheduler :as sched]))
 

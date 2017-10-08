@@ -1,4 +1,4 @@
-(ns iwaswhere-electron.main.update
+(ns iww.electron.main.update
   (:require [taoensso.timbre :as timbre :refer-macros [info error]]
             [electron-log :as electron-log]
             [electron-updater :refer [autoUpdater]]))
