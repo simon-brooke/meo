@@ -9,12 +9,12 @@
                  [ch.qos.logback/logback-classic "1.2.3"]
                  [hiccup "1.0.5"]
                  [clj-pid "0.1.2"]
-                 [clj-time "0.14.0"]
+                 [clj-time "0.14.2"]
                  [clj-http "3.7.0"]
                  [enlive "1.1.6"]
                  [me.raynes/fs "1.4.6"]
                  [markdown-clj "1.0.1"]
-                 [clj-pdf "2.2.29"]
+                 [clj-pdf "2.2.30"]
                  [cheshire "5.8.0"]
                  [me.raynes/conch "0.8.0"]
                  [com.taoensso/nippy "2.13.0" :exclusions [com.taoensso/encore]]
@@ -24,11 +24,12 @@
                  [ubergraph "0.4.0"]
                  [factual/geo "1.2.1"]
                  [camel-snake-kebab "0.4.0"]
-                 [matthiasn/systems-toolbox "0.6.24"]
+                 [matthiasn/systems-toolbox "0.6.26"]
                  [matthiasn/systems-toolbox-kafka "0.6.13"]
                  [matthiasn/systems-toolbox-sente "0.6.19"]
                  [matthiasn/systems-toolbox-electron "0.6.18"]
-                 [reagent "0.7.0" :exclusions [cljsjs/react cljsjs/react-dom]]
+                 [reagent "0.8.0-alpha2" :exclusions [cljsjs/react
+                                                      cljsjs/react-dom]]
                  [re-frame "0.10.2"]
                  [secretary "1.2.3"]
                  [capacitor "0.6.0"]
@@ -55,9 +56,9 @@
   :jvm-opts ["-XX:-OmitStackTraceInFastThrow" "-XX:+AggressiveOpts"]
 
   :profiles {:uberjar      {:aot :all}
-             :test-reagent {:dependencies [[cljsjs/react "15.6.1-2"]
-                                           [cljsjs/react-dom "15.6.1-2"]
-                                           [cljsjs/create-react-class "15.6.0-2"]]}}
+             :test-reagent {:dependencies [[cljsjs/react "16.1.0-1"]
+                                           [cljsjs/react-dom "16.1.0-1"]
+                                           [cljsjs/create-react-class "15.6.2-0"]]}}
 
   :doo {:paths {:karma "./node_modules/karma/bin/karma"}}
 
