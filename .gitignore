@@ -26,7 +26,7 @@ figwheel_server.log
 out/
 test2junit/
 packages/
-
+build/
 bin/
 codox/
 
@@ -42,3 +42,5 @@ dist/
 dev/
 
 SPOTIFY_SECRET
+
+*.log
